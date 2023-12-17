@@ -8,14 +8,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/RangelReale/osin"
+	"github.com/jordanfitz/osin-storage/storage"
 	_ "github.com/lib/pq"
+	"github.com/openshift/osin"
 	"github.com/ory-am/common/pkg"
-	"github.com/ory/osin-storage/storage"
 	"github.com/pborman/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/ory-am/dockertest.v2"
 )
 
 var db *sql.DB
@@ -75,8 +74,8 @@ func TestAuthorizeOperations(t *testing.T) {
 			Scope:       "scope",
 			RedirectUri: "http://localhost/",
 			State:       "state",
-			CreatedAt: time.Now().Round(time.Second),
-			UserData:  userDataMock,
+			CreatedAt:   time.Now().Round(time.Second),
+			UserData:    userDataMock,
 		},
 	} {
 		// Test save
@@ -135,8 +134,8 @@ func TestAccessOperations(t *testing.T) {
 		Scope:       "scope",
 		RedirectUri: "http://localhost/",
 		State:       "state",
-		CreatedAt: time.Now().Round(time.Second),
-		UserData:  userDataMock,
+		CreatedAt:   time.Now().Round(time.Second),
+		UserData:    userDataMock,
 	}
 	nestedAccess := &osin.AccessData{
 		Client:        client,
@@ -147,8 +146,8 @@ func TestAccessOperations(t *testing.T) {
 		ExpiresIn:     int32(60),
 		Scope:         "scope",
 		RedirectUri:   "https://localhost/",
-		CreatedAt: time.Now().Round(time.Second),
-		UserData:  userDataMock,
+		CreatedAt:     time.Now().Round(time.Second),
+		UserData:      userDataMock,
 	}
 	access := &osin.AccessData{
 		Client:        client,
@@ -159,8 +158,8 @@ func TestAccessOperations(t *testing.T) {
 		ExpiresIn:     int32(60),
 		Scope:         "scope",
 		RedirectUri:   "https://localhost/",
-		CreatedAt: time.Now().Round(time.Second),
-		UserData:  userDataMock,
+		CreatedAt:     time.Now().Round(time.Second),
+		UserData:      userDataMock,
 	}
 
 	createClient(t, store, client)
@@ -211,7 +210,7 @@ func TestRefreshOperations(t *testing.T) {
 					Scope:       "scope",
 					RedirectUri: "http://localhost/",
 					State:       "state",
-					CreatedAt:    time.Now().Round(time.Second),
+					CreatedAt:   time.Now().Round(time.Second),
 					UserData:    userDataMock,
 				},
 				AccessData:   nil,
@@ -220,7 +219,7 @@ func TestRefreshOperations(t *testing.T) {
 				ExpiresIn:    int32(60),
 				Scope:        "scope",
 				RedirectUri:  "https://localhost/",
-				CreatedAt:     time.Now().Round(time.Second),
+				CreatedAt:    time.Now().Round(time.Second),
 				UserData:     userDataMock,
 			},
 		},

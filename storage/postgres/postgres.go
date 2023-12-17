@@ -4,8 +4,8 @@ package postgres
 import (
 	"database/sql"
 	"fmt"
-	"github.com/RangelReale/osin"
 	"github.com/go-errors/errors"
+	"github.com/openshift/osin"
 	"github.com/ory-am/common/pkg"
 	"log"
 	"time"
