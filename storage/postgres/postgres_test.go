@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"database/sql"
+	"gopkg.in/ory-am/dockertest.v2"
 	"log"
 	"os"
 	"reflect"
